@@ -1,16 +1,20 @@
 const express = require('express');
 const { exec } = require('child_process');
+
 const fs = require('fs');
 const path = require('path'); // Import the path module
 const app = express();
 const port = 3000;
 
+  
+
 // Body parser middleware to handle POST requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve the HTML file at the root path
+
 app.get('/', (req, res) => {
+    // User is authenticated, serve the main application page
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
